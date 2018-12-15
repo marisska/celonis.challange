@@ -9,8 +9,13 @@ describe('Health check', function() {
     interactor.enterTextByName('email', account.loginData.email);
     interactor.enterTextByName('password', account.loginData.pass);
     interactor.clickButton('Log in');
-
-    it('should show user name', function() {
-       reader.shouldReadTextByClass('account-holder', account.loginData.name);
-    }); 
+       
+    interactor.clickByClass('project-item-name', 'Example Projects');
+    interactor.clickByClass('action-bar__item', 'Open');
+    interactor.clickByClass('project-item-name','1. Purchase to Pay');
+    interactor.clickByClass('action-bar__item', 'Open');
+     
+    it('should show Purchase to pay process', function() {
+        reader.shouldReadTextByClass('ce-component-title','Purchase to pay process');
+    });
 });

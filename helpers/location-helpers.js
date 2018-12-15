@@ -1,4 +1,5 @@
 const EC = protractor.ExpectedConditions;
+const timeout = 5000;
 
 module.exports = {
   getHeader() {
@@ -8,7 +9,14 @@ module.exports = {
     return element(by.name(name));
   },
   getElementByClass(className) {
-    return element(by.css(`.account-holder`));
+    var ele = element(by.css(`.${className}`));
+    browser.wait(EC.visibilityOf(ele), timeout, "Custom Error Message");
+    return ele;
+  },
+  getElementByClassAndText(className,text) {
+    var ele = element(by.cssContainingText(`.${className}`, text));
+    browser.wait(EC.visibilityOf(ele), timeout, "Custom Error Message");
+    return ele;
   },
   getButton(buttonText) {
     return element(by.buttonText(buttonText));

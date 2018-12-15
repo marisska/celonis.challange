@@ -5,6 +5,7 @@ module.exports = {
       return expect(locator.getHeader().getText()).toEqual(text);
     },
     shouldReadTextByClass(className, text) {
-      return expect(locator.getElementByClass(className).getText()).toEqual(text);
+      return expect(locator.getElementByClassAndText(className, text)
+        .isDisplayed()).toBeTruthy();(text);
     }
 }

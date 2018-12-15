@@ -6,5 +6,8 @@ module.exports = {
   },
   clickButton(buttonText) {
     locator.getButton(buttonText).click();
+  },
+  clickByClass(className, text) {
+    locator.getElementByClassAndText(className, text).click();
   }
 }
